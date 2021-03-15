@@ -1,0 +1,7 @@
+*/__pycache__
+/.idea
+*.xml
+*.db
+,gitignore
+/dataset/train
+.DS_Store
