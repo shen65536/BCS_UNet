@@ -4,4 +4,4 @@ from .down_sample import DownSample
 from .up_sample import UpSample
 from .out_conv import OutConv
 from .mid_conv import MidConv
-from .U_net import UNet
+from .u_net import UNet
