@@ -8,8 +8,8 @@ class UNet(nn.Module):
         super().__init__()
         self.in_conv = models.DoubleConv(args.channels, 64)
         self.down = models.DownSample(64, 128)
-        self.mid = models.MidConv(128, 256, 128)
-        self.up = models.UpSample(128, 64)
+        self.mid = models.MidConv(128, 128, 256)
+        self.up = models.UpSample(256, 64, 128)
         self.out_conv = models.OutConv(64, args.channels)
 
     def forward(self, x):

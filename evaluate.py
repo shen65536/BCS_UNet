@@ -25,7 +25,7 @@ if __name__ == '__main__':
         init_net.load_state_dict(torch.load("./trained_models/init_net_ratio{}.pth".format(args.ratio),
                                             map_location='cpu')["model"])
 
-        deep_net = nn.DataParallel(models.oct_net(args)).to(device).eval()
+        deep_net = nn.DataParallel(models.UNet(args)).to(device).eval()
         deep_net.load_state_dict(torch.load("./trained_models/deep_net_ratio{}.pth".format(args.ratio),
                                             map_location='cpu')["model"])
 
@@ -69,8 +69,9 @@ if __name__ == '__main__':
             for a in idx1:
                 for b in idx2:
                     input = x[:, :, a:a + args.block_size, b:b + args.block_size]
-                    output = init_net(input)
-                    output = deep_net(output)
+                    output1 = init_net(input)
+                    output2 = deep_net(output1)
+                    output = output1 + output2
                     temp[count, :, :, :, :, ] = output
                     count = count + 1
             end_time = time.time()

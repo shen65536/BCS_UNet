@@ -60,7 +60,7 @@ def train(args):
             deep_x = deep_net(init_x)
 
             loss_init = criterion(x, init_x)
-            loss_deep = criterion(x, deep_x)
+            loss_deep = criterion(x, init_x + deep_x)
 
             loss_init.backward(retain_graph=True)
             loss_deep.backward()
