@@ -17,6 +17,5 @@ def args_set():
     arg.add_argument("--ratio", default=ratio, type=float)
     arg.add_argument("--epochs", default=epochs, type=int)
     arg.add_argument("--channels", default=channels, type=int)
-    arg.add_argument("--depth", default=2, type=int)
     args = arg.parse_args()
     return args
